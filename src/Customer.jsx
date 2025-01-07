@@ -8,7 +8,7 @@ const CustomerManager = () => {
 
     const fetchCustomers = async () => {
         try {
-            const res = await axios.get('http://localhost:3001/getcustomer');
+            const res = await axios.get('http://43.205.156.4/api/getcustomer');
             setCustomers(res.data);
         } catch (err) {
             console.error('Failed to fetch customers');
@@ -35,9 +35,9 @@ const CustomerManager = () => {
 
         try {
             if (editingCustomerId) {
-                await axios.put(`http://localhost:3001/updatecustomer/${editingCustomerId}`, data);
+                await axios.put(`http://43.205.156.4/api/updatecustomer/${editingCustomerId}`, data);
             } else {
-                await axios.post('http://localhost:3001/createcustomer', data);
+                await axios.post('http://43.205.156.4/api/createcustomer', data);
             }
             fetchCustomers();
             setFormData({ name: '', email: '', file: null });
@@ -54,7 +54,7 @@ const CustomerManager = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:3001/deletecustomer/${id}`);
+            await axios.delete(`http://43.205.156.4/api/deletecustomer/${id}`);
             fetchCustomers();
         } catch (err) {
             console.error('Failed to delete customer');
